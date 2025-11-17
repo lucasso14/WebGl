@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cenário VR - Estrada com Placa</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Importa o modelo -->
+      <a-assets>
+        <a-asset-item id="placa" src="southparksign.glb"></a-asset-item>
+      </a-assets>
+
+       <!-- Importa o modelo -->
+      <a-assets>
+        <a-asset-item id="kenny" src="kenny.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- Céu -->
+      <a-sky color="#87CEEB"></a-sky>
+
+      <!-- Chão -->
+      <a-plane rotation="-90 0 0" width="100" height="100" material="shader: flat; color: #ffffff"></a-plane>
+
+      <!-- Estrada -->
+      <a-plane rotation="-90 0 0" width="5" height="100" color="#555555" position="0 0.01 0"></a-plane>
+
+      <!-- Faixa central -->
+      <a-plane rotation="-90 0 0" width="0.2" height="100" color="#FFD700" position="0 0.02 0"></a-plane>
+
+      <!-- Luzes -->
+      <a-light type="ambient" color="#ffffff" intensity="2.5"></a-light>
+      <a-light type="directional" color="#ffffff" intensity="1" position="5 10 5"></a-light>
+
+      <!-- Placa próxima à estrada -->
+      <a-entity position="3 0 -5" rotation="0 0 0">
+        <!-- rotação interna para corrigir eixo do modelo -->
+        <a-entity
+          gltf-model="#placa"
+          scale="1 1 1"
+          position="0 0 0"
+          rotation="0 180 0"> <!-- tente variar esse eixo -->
+          
+        </a-entity>
+
+
+         <!-- Kenny -->
+      <a-entity position="3 0 -5" rotation="0 0 0">
+        <!-- rotação interna para corrigir eixo do modelo -->
+        <a-entity
+          gltf-model="#kenny"
+          scale="1 1 1"
+          position="-2.5 0 8"
+          rotation="0 180 0"> <!-- tente variar esse eixo -->
+          
+        </a-entity>
+      </a-entity>
+
+      <!-- Câmera -->
+      <a-camera position="0 1.6 10"></a-camera>
+    </a-scene>
+  </body>
+</html>
