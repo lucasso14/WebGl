@@ -9,12 +9,16 @@
     <a-scene>
       <!-- Importa o modelo -->
       <a-assets>
-        <a-asset-item id="placa" src="southparksign.glb"></a-asset-item>
+        <a-asset-item id="placa" src="modelos/southparksign.glb"></a-asset-item>
       </a-assets>
 
-       <!-- Importa o modelo -->
-      <a-assets>
-        <a-asset-item id="kenny" src="kenny.glb"></a-asset-item>
+              <!-- PERSONAGEM PNG (frente e costas) -->
+        <img id="CartmanFrente" src="modelos/EricCartman.png">
+        <img id="CartmanCostas" src="modelos/cartman-costas.png">
+      </a-assets>
+
+        <img id="KennyFrente" src="modelos/kenny-frente.png">
+        <img id="KennyCostas" src="modelos/kenny-costas.png">
       </a-assets>
 
       <!-- Céu -->
@@ -45,20 +49,57 @@
         </a-entity>
 
 
-         <!-- Kenny -->
-      <a-entity position="3 0 -5" rotation="0 0 0">
-        <!-- rotação interna para corrigir eixo do modelo -->
-        <a-entity
-          gltf-model="#kenny"
-          scale="1 1 1"
-          position="-2.5 0 8"
-          rotation="0 180 0"> <!-- tente variar esse eixo -->
-          
-        </a-entity>
+        <!-- PERSONAGEM 2D FRENTE / COSTAS -->
+      <a-entity position="0 0.5 2.5">
+        
+        <!-- Frente -->
+        <a-plane 
+          src="#CartmanFrente"
+          width="1"
+          height="1"
+          material="transparent: true"
+          position="0 0 0.001"
+          rotation="0 -90 0">
+        </a-plane>
+
+        <!-- Costas -->
+        <a-plane 
+          src="#CartmanCostas"
+          width="1"
+          height="1"
+          material="transparent: true"
+          position="0 0 -0.001"
+          rotation="0 90 0">
+        </a-plane>
+
+      </a-entity>
+
+            <a-entity position="0 0.5 4">
+        
+        <!-- Frente -->
+        <a-plane 
+          src="#KennyFrente"
+          width="0.7"
+          height="1"
+          material="transparent: true"
+          position="0 0 0.001"
+          rotation="0 -90 0">
+        </a-plane>
+
+        <!-- Costas -->
+        <a-plane 
+          src="#KennyCostas"
+          width="0.7"
+          height="1"
+          material="transparent: true"
+          position="0 0 -0.001"
+          rotation="0 90 0">
+        </a-plane>
+
       </a-entity>
 
       <!-- Câmera -->
-      <a-camera position="0 1.6 10"></a-camera>
+      <a-camera position="-3 1.6 10"></a-camera>
     </a-scene>
   </body>
 </html>
