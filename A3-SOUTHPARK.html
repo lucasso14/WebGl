@@ -21,6 +21,14 @@
         <img id="KennyCostas" src="modelos/kenny-costas.png">
       </a-assets>
 
+        <img id="KyleFrente" src="modelos/kyle-frente.png">
+        <img id="KyleCostas" src="modelos/kyle-costas.png">
+      </a-assets>
+
+        <img id="StanFrente" src="modelos/stan-frente.png">
+        <img id="StanCostas" src="modelos/stan-costas.png">
+      </a-assets>
+
       <!-- Céu -->
       <a-sky color="#87CEEB"></a-sky>
 
@@ -50,7 +58,7 @@
 
 
         <!-- PERSONAGEM 2D FRENTE / COSTAS -->
-      <a-entity position="0 0.5 2.5">
+      <a-entity position="0 0.5 3">
         
         <!-- Frente -->
         <a-plane 
@@ -79,7 +87,7 @@
         <!-- Frente -->
         <a-plane 
           src="#KennyFrente"
-          width="0.7"
+          width="0.75"
           height="1"
           material="transparent: true"
           position="0 0 0.001"
@@ -89,8 +97,57 @@
         <!-- Costas -->
         <a-plane 
           src="#KennyCostas"
-          width="0.7"
+          width="0.75"
           height="1"
+          material="transparent: true"
+          position="0 0 -0.001"
+          rotation="0 90 0">
+        </a-plane>
+
+      </a-entity>
+
+            <a-entity position="0 0.5 2">
+        
+        <!-- Frente -->
+        <a-plane 
+          src="#KyleFrente"
+          width="0.75"
+          height="1"
+          material="transparent: true"
+          position="0 0 0.001"
+          rotation="0 -90 0">
+        </a-plane>
+
+        <!-- Costas -->
+        <a-plane 
+          src="#KyleCostas"
+          width="0.75"
+          height="1"
+          material="transparent: true"
+          position="0 0 -0.001"
+          rotation="0 90 0">
+        </a-plane>
+
+      </a-entity>
+
+
+                  <a-entity position="0 0.53 1">
+        
+        <!-- Frente -->
+        <a-plane 
+          src="#StanFrente"
+          width="0.75"
+          height="1.1"
+          material="transparent: true"
+          position="0 0 0.001"
+          rotation="0 -90 0">
+        </a-plane>
+
+        <!-- Costas -->
+        <a-plane 
+          src="#StanCostas"
+          width="0.75"
+          height="1.1"
           material="transparent: true"
           position="0 0 -0.001"
           rotation="0 90 0">
