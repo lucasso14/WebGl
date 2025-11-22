@@ -2,35 +2,48 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Cenário VR - Estrada com Placa</title>
+    <title>Cenário VR - Estrada South Park</title>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
-      <!-- Importa o modelo -->
+      <!-- Modelos -->
       <a-assets>
         <a-asset-item id="placa" src="modelos/southparksign.glb"></a-asset-item>
+
+        <img id="cartman-frente" src="modelos/EricCartman.png">
+        <img id="cartman-costas" src="modelos/cartman-costas.png">
+
+        <img id="kenny-frente" src="modelos/kenny-frente.png">
+        <img id="kenny-costas" src="modelos/kenny-costas.png">
+
+        <img id="kyle-frente" src="modelos/kyle-frente.png">
+        <img id="kyle-costas" src="modelos/kyle-costas.png">
+
+        <img id="stan-frente" src="modelos/stan-frente.png">
+        <img id="stan-costas" src="modelos/stan-costas.png">
+
+        <img id="cube-right" src="modelos/Montanhas.png">
+        <img id="cube-left" src="modelos/Montanhas.png">
+        <img id="cube-top" src="modelos/Ceu.png">
+        <img id="cube-back" src="modelos/Montanhas.png">
+        <img id="cube-front" src="modelos/Montanhas.png">
+
+        <img id="arvore-neve" src="modelos/arvore-neve.png">
       </a-assets>
 
-              <!-- PERSONAGEM PNG (frente e costas) -->
-        <img id="CartmanFrente" src="modelos/EricCartman.png">
-        <img id="CartmanCostas" src="modelos/cartman-costas.png">
-      </a-assets>
+      <!-- Fundo -->
+      <a-entity id="cubemap" position="0 50 0">
+        <a-plane src="#cube-right" width="100" height="100" position="50 0 0" rotation="0 90 0" material="side: double"></a-plane>
+        <a-plane src="#cube-left" width="100" height="100" position="-50 0 0" rotation="0 -90 0" material="side: double"></a-plane>
+        <a-plane src="#cube-top" width="100" height="100" position="0 50 0" rotation="90 0 0" material="side: double"></a-plane>
+        <a-plane src="#cube-back" width="100" height="100" position="0 0 -50" rotation="0 180 0" material="side: double"></a-plane>
+        <a-plane src="#cube-front" width="100" height="100" position="0 0 50" rotation="0 0 0" material="side: double"></a-plane>
+      </a-entity>
 
-        <img id="KennyFrente" src="modelos/kenny-frente.png">
-        <img id="KennyCostas" src="modelos/kenny-costas.png">
-      </a-assets>
-
-        <img id="KyleFrente" src="modelos/kyle-frente.png">
-        <img id="KyleCostas" src="modelos/kyle-costas.png">
-      </a-assets>
-
-        <img id="StanFrente" src="modelos/stan-frente.png">
-        <img id="StanCostas" src="modelos/stan-costas.png">
-      </a-assets>
-
-      <!-- Céu -->
-      <a-sky color="#87CEEB"></a-sky>
+      <!-- Luzes -->
+      <a-light type="ambient" color="#ffffff" intensity="2.5"></a-light>
+      <a-light type="directional" color="#ffffff" intensity="1" position="5 10 5"></a-light>
 
       <!-- Chão -->
       <a-plane rotation="-90 0 0" width="100" height="100" material="shader: flat; color: #ffffff"></a-plane>
@@ -41,122 +54,169 @@
       <!-- Faixa central -->
       <a-plane rotation="-90 0 0" width="0.2" height="100" color="#FFD700" position="0 0.02 0"></a-plane>
 
-      <!-- Luzes -->
-      <a-light type="ambient" color="#ffffff" intensity="2.5"></a-light>
-      <a-light type="directional" color="#ffffff" intensity="1" position="5 10 5"></a-light>
-
-      <!-- Placa próxima à estrada -->
+      <!-- Placa e Personagens 2D -->
       <a-entity position="3 0 -5" rotation="0 0 0">
-        <!-- rotação interna para corrigir eixo do modelo -->
+        <!-- Placa -->
         <a-entity
           gltf-model="#placa"
           scale="1 1 1"
           position="0 0 0"
-          rotation="0 180 0"> <!-- tente variar esse eixo -->
-          
+          rotation="0 180 0">
         </a-entity>
 
+        <!-- Cartman -->
+        <a-entity position="0 0.5 3">
+          <a-plane 
+            src="#cartman-frente"
+            width="1"
+            height="1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 0.001"
+            rotation="0 -90 0">
+          </a-plane>
 
-        <!-- PERSONAGEM 2D FRENTE / COSTAS -->
-      <a-entity position="0 0.5 3">
-        
-        <!-- Frente -->
-        <a-plane 
-          src="#CartmanFrente"
-          width="1"
-          height="1"
-          material="transparent: true"
-          position="0 0 0.001"
-          rotation="0 -90 0">
-        </a-plane>
+          <a-plane 
+            src="#cartman-costas"
+            width="1"
+            height="1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 -0.001"
+            rotation="0 90 0">
+          </a-plane>
+        </a-entity>
 
-        <!-- Costas -->
-        <a-plane 
-          src="#CartmanCostas"
-          width="1"
-          height="1"
-          material="transparent: true"
-          position="0 0 -0.001"
-          rotation="0 90 0">
-        </a-plane>
+        <!-- Kenny -->
+        <a-entity position="0 0.5 4">
+          <a-plane 
+            src="#kenny-frente"
+            width="0.75"
+            height="1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 0.001"
+            rotation="0 -90 0">
+          </a-plane>
 
-      </a-entity>
+          <a-plane 
+            src="#kenny-costas"
+            width="0.75"
+            height="1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 -0.001"
+            rotation="0 90 0">
+          </a-plane>
+        </a-entity>
 
-            <a-entity position="0 0.5 4">
-        
-        <!-- Frente -->
-        <a-plane 
-          src="#KennyFrente"
-          width="0.75"
-          height="1"
-          material="transparent: true"
-          position="0 0 0.001"
-          rotation="0 -90 0">
-        </a-plane>
+        <!-- Kyle -->
+        <a-entity position="0 0.5 2">        
+          <a-plane 
+            src="#kyle-frente"
+            width="0.75"
+            height="1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 0.001"
+            rotation="0 -90 0">
+          </a-plane>
 
-        <!-- Costas -->
-        <a-plane 
-          src="#KennyCostas"
-          width="0.75"
-          height="1"
-          material="transparent: true"
-          position="0 0 -0.001"
-          rotation="0 90 0">
-        </a-plane>
+          <a-plane 
+            src="#kyle-costas"
+            width="0.75"
+            height="1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 -0.001"
+            rotation="0 90 0">
+          </a-plane>
+        </a-entity>
 
-      </a-entity>
+        <!-- Stan -->
+        <a-entity position="0 0.53 1">
+          <a-plane 
+            src="#stan-frente"
+            width="0.75"
+            height="1.1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 0.001"
+            rotation="0 -90 0">
+          </a-plane>
 
-            <a-entity position="0 0.5 2">
-        
-        <!-- Frente -->
-        <a-plane 
-          src="#KyleFrente"
-          width="0.75"
-          height="1"
-          material="transparent: true"
-          position="0 0 0.001"
-          rotation="0 -90 0">
-        </a-plane>
-
-        <!-- Costas -->
-        <a-plane 
-          src="#KyleCostas"
-          width="0.75"
-          height="1"
-          material="transparent: true"
-          position="0 0 -0.001"
-          rotation="0 90 0">
-        </a-plane>
-
-      </a-entity>
-
-
-                  <a-entity position="0 0.53 1">
-        
-        <!-- Frente -->
-        <a-plane 
-          src="#StanFrente"
-          width="0.75"
-          height="1.1"
-          material="transparent: true"
-          position="0 0 0.001"
-          rotation="0 -90 0">
-        </a-plane>
-
-        <!-- Costas -->
-        <a-plane 
-          src="#StanCostas"
-          width="0.75"
-          height="1.1"
-          material="transparent: true"
-          position="0 0 -0.001"
-          rotation="0 90 0">
-        </a-plane>
-
+          <a-plane 
+            src="#stan-costas"
+            width="0.75"
+            height="1.1"
+            material="transparent: true; alphaTest: 0.5"
+            position="0 0 -0.001"
+            rotation="0 90 0">
+          </a-plane>
+        </a-entity>
       </a-entity>
 
       <!-- Câmera -->
-      <a-camera position="-3 1.6 10"></a-camera>
+      <a-camera position="0 1.6 15"></a-camera>
+
+      <script>
+        // Árvores 2D
+        const sceneEl = document.querySelector('a-scene');
+        const heightArvore = 10;
+        const widthArvore = 5;
+        const arvores = [
+          { x:   8, z: -18, w: widthArvore, h: heightArvore },
+          { x:   5, z:  15, w: widthArvore, h: heightArvore },
+          { x:  10, z:  -5, w: widthArvore, h: heightArvore },
+          { x:  12, z:  22, w: widthArvore, h: heightArvore },
+          { x:  15, z:  -8, w: widthArvore, h: heightArvore },
+          { x:  18, z:  15, w: widthArvore, h: heightArvore },
+          { x:  20, z:  10, w: widthArvore, h: heightArvore },
+          { x:  14, z:  37, w: widthArvore, h: heightArvore },
+          { x:  19, z: -30, w: widthArvore, h: heightArvore },
+          { x:  22, z: -12, w: widthArvore, h: heightArvore },
+          { x:  23, z:  35, w: widthArvore, h: heightArvore },
+          { x:  25, z: -20, w: widthArvore, h: heightArvore },
+          { x:  27, z: -35, w: widthArvore, h: heightArvore },
+          { x:  28, z:  18, w: widthArvore, h: heightArvore },
+          { x:  30, z:   0, w: widthArvore, h: heightArvore },
+          { x:  35, z: -15, w: widthArvore, h: heightArvore },
+          { x:  -5, z: -15, w: widthArvore, h: heightArvore },
+          { x: -10, z:   5, w: widthArvore, h: heightArvore },
+          { x: -12, z: -22, w: widthArvore, h: heightArvore },
+          { x: -14, z:  37, w: widthArvore, h: heightArvore },
+          { x: -15, z:  -8, w: widthArvore, h: heightArvore },
+          { x: -18, z:  20, w: widthArvore, h: heightArvore },
+          { x: -19, z: -30, w: widthArvore, h: heightArvore },
+          { x: -20, z:   0, w: widthArvore, h: heightArvore },
+          { x: -22, z: -25, w: widthArvore, h: heightArvore },
+          { x: -23, z:  35, w: widthArvore, h: heightArvore },
+          { x: -25, z:  15, w: widthArvore, h: heightArvore },
+          { x: -27, z: -35, w: widthArvore, h: heightArvore },
+          { x: -28, z:   8, w: widthArvore, h: heightArvore },
+          { x: -30, z: -10, w: widthArvore, h: heightArvore },
+          { x: -35, z: -25, w: widthArvore, h: heightArvore },
+          { x: -38, z: -30, w: widthArvore, h: heightArvore }
+        ];
+
+        arvores.forEach(arvore => {
+          const entity = document.createElement('a-entity');
+          entity.setAttribute('position', `${arvore.x} 0 ${arvore.z}`);
+          
+          const planeFront = document.createElement('a-plane');
+          planeFront.setAttribute('src', '#arvore-neve');
+          planeFront.setAttribute('width', arvore.w);
+          planeFront.setAttribute('height', arvore.h);
+          planeFront.setAttribute('material', 'transparent: true; alphaTest: 0.5; shader: flat; side: double');
+          planeFront.setAttribute('position', '0 4.85 0.001');
+          planeFront.setAttribute('rotation', '0 90 0');
+          entity.appendChild(planeFront);
+
+          const planeBack = document.createElement('a-plane');
+          planeBack.setAttribute('src', '#arvore-neve');
+          planeBack.setAttribute('width', arvore.w);
+          planeBack.setAttribute('height', arvore.h);
+          planeBack.setAttribute('material', 'transparent: true; alphaTest: 0.5; shader: flat; side: double');
+          planeBack.setAttribute('position', '0.05 4.85 -0.001');
+          planeBack.setAttribute('rotation', '0 -90 0');
+          entity.appendChild(planeBack);
+          
+          sceneEl.appendChild(entity);
+        });
+      </script>
     </a-scene>
   </body>
 </html>
