@@ -1,0 +1,14 @@
+# Dependências do Node
+/node_modules
+
+# Logs e Dados Temporários
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de Build/Output Comuns
+/dist
+/build
+
+# Variáveis de Ambiente e Segredos
+.env
