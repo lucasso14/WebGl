@@ -11,6 +11,8 @@
       <a-assets>
         <a-asset-item id="placa" src="modelos/southparksign.glb"></a-asset-item>
 
+        <a-asset-item id="onibus" src="modelos/bus.glb"></a-asset-item>
+
         <img id="cartman-frente" src="modelos/EricCartman.png">
         <img id="cartman-costas" src="modelos/cartman-costas.png">
 
@@ -61,6 +63,14 @@
           gltf-model="#placa"
           scale="1 1 1"
           position="0 0 0"
+          rotation="0 180 0">
+        </a-entity>
+
+        <!-- Onibus -->
+        <a-entity
+          gltf-model="#onibus"
+          scale="0.7 0.7 0.7"
+          position="-2 0 20"
           rotation="0 180 0">
         </a-entity>
 
@@ -219,4 +229,5 @@
       </script>
     </a-scene>
   </body>
+
 </html>
